@@ -71,7 +71,7 @@ def export_single_model(model,
     elif arch_config["algorithm"] == "SVTR":
         other_shape = [
             paddle.static.InputSpec(
-                shape=[None, 3, 48, -1], dtype="float32"),
+                shape=[None] + input_shape, dtype="float32"),
         ]
         model = to_static(model, input_spec=other_shape)
     elif arch_config["algorithm"] == "PREN":
